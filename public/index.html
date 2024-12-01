@@ -8,17 +8,26 @@
 </head>
 <body>
   <div class="container">
-    <h1>Bienvenido PRUEBADB</h1>
+    <h1>Bienvenido</h1>
     <h2 id="deviceName">Dispositivo: </h2>
 
     <div id="statusContainer">
-      <p>Estado del dispositivo: <span id="status">Desconocido</span></p>
-      <div id="led" class="led"></div> <!-- LED virtual -->
+      <p>Estado del dispositivo: <span id="status1">Desconocido</span></p>
+      <div id="led1" class="led"></div> <!-- LED virtual para el control 1 -->
+      <button id="onButton1">Abrir 1</button> <!-- Botón para controlar LED1 -->
+      
+      <p>Estado del dispositivo: <span id="status2">Desconocido</span></p>
+      <div id="led2" class="led"></div> <!-- LED virtual para el control 2 -->
+      <button id="onButton2">Abrir 2</button> <!-- Botón para controlar LED2 -->
     </div>
 
-    <div class="button-container">
-      <button id="onButton">Encender</button> <!-- Solo botón de encender -->
-    </div>
+<!-- Enlace como link clicable -->
+<p id="website"><a href="https://www.electrosolucion.com" target="_blank">www.electrosolucion.com</a></p>
+    
+<!-- Mensaje de IP con estilo reducido -->
+<p id="ip" class="small-text">Your IP address may be stored for security purposes</p>
+</div>
+
   </div>
 
   <script src="/socket.io/socket.io.js"></script>
