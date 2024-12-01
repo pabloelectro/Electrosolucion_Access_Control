@@ -26,9 +26,9 @@ const mqttClient = mqtt.connect('mqtts://d8badc4d4c1749ea9b0f242d1e1a0c91.s1.eu.
 
 // Estado de los dispositivos (en este caso un ejemplo simple de 3 dispositivos)
 let devices = {
-  'ESP32_1': 'Desconocido',
-  'ESP32_2': 'Desconocido',
-  'ESP32_3': 'Desconocido'
+  'ESP32_1': 'Desconectado',
+  'ESP32_2': 'Desconectado',
+  'ESP32_3': 'Desconectado'
 };
 
 // Conexión con MQTT

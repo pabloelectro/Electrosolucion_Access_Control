@@ -1,58 +1,68 @@
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f9;
-}
-
+/* Título más pequeño y color verde */
 h1 {
-  margin-top: 50px;
-  color: #4CAF50;
+  color: green; /* Título en verde */
+  font-size: 20px; /* Reducir tamaño del título */
+  text-align: center; /* Centrar el título */
 }
 
-#deviceInfo {
-  margin-top: 30px;
+h2 {
+  color: green; /* Título en verde */
+  font-size: 16 px; /* Reducir tamaño del título */
+  text-align: center; /* Centrar el título */
 }
-
-.led {
-  width: 50px;
-  height: 50px;
-  margin: 20px auto;
-  border-radius: 50%;
-  background-color: grey;  /* Default color when OFF */
-  display: block;
-}
-
+/* Botones más grandes */
 button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
+  font-size: 18px; /* Aumentar el tamaño de la fuente */
+  padding: 15px 30px; /* Aumentar el área del botón */
+  margin: 10px 0; /* Añadir espacio entre los botones */
+  cursor: pointer; /* Cambiar el cursor al pasar por encima */
+  background-color: #4CAF50; /* Fondo verde */
+  color: white; /* Texto blanco */
+  border: none; /* Sin bordes */
+  border-radius: 5px; /* Bordes redondeados */
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #45a049; /* Efecto hover para cambiar el color del botón */
 }
 
-p {
-  font-size: 18px;
-  color: #333;
-}
-
-
-/* Estilo para el enlace (enlace clicable) */
+/* Enlace como un link clicable */
 #website a {
-  color: blue;          /* Color del enlace */
-  text-decoration: underline;  /* Subrayado */
+  color: blue; /* Color azul para el enlace */
+  text-decoration: none; /* Eliminar subrayado */
 }
 
-/* Estilo para hacer el texto pequeño */
+#website a:hover {
+  text-decoration: underline; /* Subrayado cuando el cursor pasa por encima */
+}
+
+/* Estilo para el mensaje de IP reducido */
 .small-text {
-  font-size: 0.8em;      /* Reducir tamaño de fuente */
-  color: gray;           /* Color gris para el texto */
+  font-size: 12px; /* Reducir el tamaño del texto */
+  color: #555; /* Color gris */
+  text-align: center; /* Centrar el texto */
+  margin-top: 20px; /* Espacio superior */
+}
+
+/* Estilo para el contenedor principal */
+.container {
+  padding: 20px;
+  text-align: center; /* Centrar el contenido */
+}
+
+/* Estilo para los LEDs */
+.led {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 10px auto;
+  background-color: grey; /* LED apagado por defecto */
+}
+
+#led1 {
+  background-color: grey; /* LED 1 apagado por defecto */
+}
+
+#led2 {
+  background-color: grey; /* LED 2 apagado por defecto */
 }
