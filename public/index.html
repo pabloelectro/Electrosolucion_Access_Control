@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control de Dispositivo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Bienvenido</h1>
+    <h2 id="deviceName">Dispositivo: </h2>
+
+    <div id="statusContainer">
+      <p>Estado del dispositivo: <span id="status">Desconocido</span></p>
+      <div id="led" class="led"></div> <!-- LED virtual -->
+    </div>
+
+    <div class="button-container">
+      <button id="onButton">Encender</button> <!-- Solo botón de encender -->
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>
