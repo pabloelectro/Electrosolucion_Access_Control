@@ -7,7 +7,9 @@ const socketIo = require('socket.io');
 
 // Configuración del servidor Express
 const app = express();
-const port = 3000;
+//const port = 3000;
+const port = process.env.PORT || 3000;  // Usar el puerto de Render o 3000 por defecto
+
 
 // Usar body-parser para analizar el cuerpo de las solicitudes POST
 app.use(bodyParser.json());
