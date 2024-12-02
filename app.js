@@ -26,9 +26,56 @@ const mqttClient = mqtt.connect('mqtts://d8badc4d4c1749ea9b0f242d1e1a0c91.s1.eu.
 
 // Estado de los dispositivos (en este caso un ejemplo simple de 3 dispositivos)
 let devices = {
-  'ESP32_1': 'Desconectado',
-  'ESP32_2': 'Desconectado',
-  'ESP32_3': 'Desconectado'
+  'a1b2c3d4e5f6': 'disconnected',
+  'b2d3e4f5g6h7': 'disconnected',
+  'c3f4g5h6i7j8': 'disconnected',
+  'd4g5h6i7j8k9': 'disconnected',
+  'e5h6i7j8k9l0': 'disconnected',
+  'f6i7j8k9l0m1': 'disconnected',
+  'g7j8k9l0m1n2': 'disconnected',
+  'h8k9l0m1n2o3': 'disconnected',
+  'i9l0m1n2o3p4': 'disconnected',
+  'j10m1n2o3p4q5': 'disconnected',
+  'k11n2o3p4q5r6': 'disconnected',
+  'l12o3p4q5r6s7': 'disconnected',
+  'm13p4q5r6s7t8': 'disconnected',
+  'n14q5r6s7t8u9': 'disconnected',
+  'o15r6s7t8u9v0': 'disconnected',
+  'p16s7t8u9v0w1': 'disconnected',
+  'q17t8u9v0w1x2': 'disconnected',
+  'r18u9v0w1x2y3': 'disconnected',
+  's19v0w1x2y3z4': 'disconnected',
+  't20w1x2y3z4a5': 'disconnected',
+  'u21x2y3z4a5b6': 'disconnected',
+  'v22y3z4a5b6c7': 'disconnected',
+  'w23z4a5b6c7d8': 'disconnected',
+  'x24a5b6c7d8e9': 'disconnected',
+  'y25b6c7d8e9f0': 'disconnected',
+  'z26c7d8e9f0g1': 'disconnected',
+  'a27d8e9f0g1h2': 'disconnected',
+  'b28e9f0g1h2i3': 'disconnected',
+  'c29f0g1h2i3j4': 'disconnected',
+  'd30g1h2i3j4k5': 'disconnected',
+  'e31h2i3j4k5l6': 'disconnected',
+  'f32i3j4k5l6m7': 'disconnected',
+  'g33j4k5l6m7n8': 'disconnected',
+  'h34k5l6m7n8o9': 'disconnected',
+  'i35l6m7n8o9p0': 'disconnected',
+  'j36m7n8o9p0q1': 'disconnected',
+  'k37n8o9p0q1r2': 'disconnected',
+  'l38o9p0q1r2s3': 'disconnected',
+  'm39p0q1r2s3t4': 'disconnected',
+  'n40q1r2s3t4u5': 'disconnected',
+  'o41r2s3t4u5v6': 'disconnected',
+  'p42s3t4u5v6w7': 'disconnected',
+  'q43t4u5v6w7x8': 'disconnected',
+  'r44u5v6w7x8y9': 'disconnected',
+  's45v6w7x8y9z0': 'disconnected',
+  't46w7x8y9z0a1': 'disconnected',
+  'u47x8y9z0a1b2': 'disconnected',
+  'v48y9z0a1b2c3': 'disconnected',
+  'w49z0a1b2c3d4': 'disconnected',
+  'x50a1b2c3d4e5': 'disconnected'
 };
 
 // Conexión con MQTT
@@ -106,7 +153,7 @@ io.on('connection', (socket) => {
 
   // Obtener el ID del dispositivo desde el parámetro 'device' enviado desde el cliente
   socket.on('subscribe', (deviceId) => {
-    console.log(`Cliente suscrito a: ESP32/${deviceId}/status1 y ESP32/${deviceId}/status2`);
+    console.log(`Cliente suscrito a: ESP32/${deviceId}/status1, ESP32/${deviceId}/status2 y ESP32/${deviceId}/status2`);
     
     // Suscribimos a los tópicos de estado
     mqttClient.subscribe(`ESP32/${deviceId}/status1`, (err) => {
@@ -114,6 +161,11 @@ io.on('connection', (socket) => {
     });
     mqttClient.subscribe(`ESP32/${deviceId}/status2`, (err) => {
       if (err) console.error('Error al suscribirse al tópico status2:', err);
+    });
+
+    // Suscribimos al tópico name, el cual recibirá el nombre asignado al dispositivo
+    mqttClient.subscribe(`ESP32/${deviceId}/name`, (err) => {
+      if (err) console.error('Error al suscribirse al tópico name:', err);
     });
 
     // Publicar el mensaje "ESTADO" en el tópico .../status cuando se conecta un cliente
@@ -135,6 +187,9 @@ io.on('connection', (socket) => {
         if (err) console.error('Error al desuscribirse del tópico status1:', err);
       });
       mqttClient.unsubscribe(`ESP32/${deviceId}/status2`, (err) => {
+        if (err) console.error('Error al desuscribirse del tópico status2:', err);
+      });
+      mqttClient.unsubscribe(`ESP32/${deviceId}/name`, (err) => {
         if (err) console.error('Error al desuscribirse del tópico status2:', err);
       });
     }

@@ -1,13 +1,13 @@
 /* Título más pequeño y color verde */
 h1 {
   color: green; /* Título en verde */
-  font-size: 20px; /* Reducir tamaño del título */
+  font-size: 26px; /* Reducir tamaño del título */
   text-align: center; /* Centrar el título */
 }
 
 h2 {
   color: green; /* Título en verde */
-  font-size: 16 px; /* Reducir tamaño del título */
+ /* font-size: 16 px; /* Reducir tamaño del título */
   text-align: center; /* Centrar el título */
 }
 /* Botones más grandes */

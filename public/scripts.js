@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const deviceId = urlParams.get('device');  // Ejemplo: ?device=ESP32_1
   
   // Actualizamos el nombre del dispositivo en la interfaz
-  deviceNameElement.innerText = `Dispositivo: ${deviceId}`;
+  //deviceNameElement.innerText = `Device: ${deviceId}`;
+  deviceNameElement.innerText = `Device: Unidentified`;
   
   // Conectar al servidor WebSocket
   const socket = io.connect();
@@ -28,28 +29,31 @@ document.addEventListener('DOMContentLoaded', function() {
       if (data.control === 'status1') {
         // Actualizamos el estado y el LED según el valor recibido en 'status1'
         if (data.state === 'ON') {
-          statusElement1.innerText = 'Abierto';
+          statusElement1.innerText = 'Open';
           ledElement1.style.backgroundColor = 'green';  // LED verde
         } else if (data.state === 'OFF') {
-          statusElement1.innerText = 'Cerrado';
+          statusElement1.innerText = 'Waiting';
           ledElement1.style.backgroundColor = 'grey';  // LED apagado
         }
       } else if (data.control === 'status2') {
         // Actualizamos el estado y el LED según el valor recibido en 'status2'
         if (data.state === 'ON') {
-          statusElement2.innerText = 'Abierto';
+          statusElement2.innerText = 'Open';
           ledElement2.style.backgroundColor = 'green';  // LED verde
         } else if (data.state === 'OFF') {
-          statusElement2.innerText = 'Cerrado';
+          statusElement2.innerText = 'Waiting';
           ledElement2.style.backgroundColor = 'grey';  // LED apagado
         }
+      }else if (data.control === 'name') {
+        // Actualizamos el estado y el LED según el valor recibido en 'status2'
+        deviceNameElement.innerText = `Device: ${data.state}`;
       }
     }
   });
   
   // Evento para encender/apagar el dispositivo en el control 1
   onButton1.addEventListener('click', function() {
-    const action = statusElement1.innerText === 'Abierto' ? 'OFF' : 'ON';
+    const action = statusElement1.innerText === 'Open' ? 'OFF' : 'ON';
     fetch('/control', {
       method: 'POST',
       headers: {
@@ -68,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Evento para encender/apagar el dispositivo en el control 2
   onButton2.addEventListener('click', function() {
-    const action = statusElement2.innerText === 'Abierto' ? 'OFF' : 'ON';
+    const action = statusElement2.innerText === 'Open' ? 'OFF' : 'ON';
     fetch('/control', {
       method: 'POST',
       headers: {
