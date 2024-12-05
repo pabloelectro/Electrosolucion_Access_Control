@@ -18,9 +18,9 @@ const httpServer = http.createServer(app);
 const io = socketIo(httpServer);  // Configuración de WebSocket
 
 // Conexión al broker MQTT con SSL/TLS
-const mqttClient = mqtt.connect('mqtts://d8badc4d4c1749ea9b0f242d1e1a0c91.s1.eu.hivemq.cloud:8883', {
-  username: 'UserMQTT',
-  password: '12345678',
+const mqttClient = mqtt.connect('mqtts://9172c8f292e643d9a364e53bfa3282f0.s1.eu.hivemq.cloud:8883', {
+  username: 'electrosolucion',
+  password: '2025Electrosolucion.com',
   ca: fs.readFileSync('./certs/ca.crt') // Si es necesario
 });
 
